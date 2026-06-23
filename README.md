@@ -46,7 +46,7 @@ A full-stack, Arabic-first lease management system for organizations that both *
 ### تسجيل عقد جديد — مع منتقي التاريخ الهجري/الميلادي وتوليد الدفعات
 ![New Contract](screenshots/new-contract.png)
 
-### المبالغ المستحقة — جدول الدفعات بالتقويم 
+### المبالغ المستحقة — جدول الدفعات بالتقويم الهجري
 ![Payments](screenshots/payments.png)
 
 ### التقرير الشهري
