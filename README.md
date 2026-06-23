@@ -1,104 +1,154 @@
-# Lease Management System · نظام إدارة عقود الإيجار
+<div align="center">
 
-A full-stack lease management system for organizations that **both rent properties (as tenant) and lease them out (as landlord)**. It tracks contracts in both directions, auto-generates payment schedules, manages multi-department approvals, and surfaces expiry/payment alerts — with a bilingual (Arabic-first, RTL) interface and a Hijri/Gregorian calendar toggle.
+# نظام إدارة عقود الإيجار
+### Lease Management System
 
-Built as a portfolio piece with a design language inspired by Saudi Arabia's **Najiz** e-services platform (official green + gold).
+نظام متكامل لإدارة عقود الإيجار في الاتجاهين — العقود التي **نستأجرها** (مدفوعات) والعقود التي **نؤجّرها** (محصّلات) — مع توليد جداول الدفعات تلقائياً، وموافقات الإدارات، ودعم التقويمين الهجري والميلادي.
 
----
+A full-stack, Arabic-first lease management system for organizations that both **rent properties (as tenant)** and **lease them out (as landlord)** — with automatic payment-schedule generation, multi-department approvals, and Hijri/Gregorian calendar support.
 
-## Key Features
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?logo=tailwindcss&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-node:sqlite-003B57?logo=sqlite&logoColor=white)
 
-- **Bidirectional contracts** — every contract has a *direction*:
-  - `نستأجر` (leased-in / **payable** — money we pay)
-  - `نؤجّر` (leased-out / **receivable** — money owed to us)
-- **Automatic payment schedules** — generated from start date + frequency (monthly, quarterly, 4-monthly, semi-annual, annual). Amounts are distributed to the halala with rounding remainder placed on the final installment, so the schedule always sums to the exact contract value.
-- **Role-based access (3 roles)**
-  - `admin` — registers contracts & files, records payments, full visibility
-  - `department` — sees only contracts linked to their department, approves/rejects (rejection requires a mandatory reason; it is recorded but does **not** change contract status)
-  - `viewer` — read-only across everything
-- **Dashboard** — separate totals for payable vs. receivable, outstanding balances, expiring-contract and overdue-payment counters, and a live alerts feed.
-- **Monthly report** — pick any month to see all amounts due, split by direction.
-- **In-app notifications** — 30 days before contract expiry, 7 days before a payment is due (plus overdue flags).
-- **Department management** — departments are admin-managed data; a department linked to contracts/users is protected from deletion (deactivate instead).
-- **Hijri/Gregorian toggle** — dates are stored as Gregorian ISO and rendered in either calendar via the Umm al-Qura calendar (`Intl`, no external library). Preference persists per user.
-- **File uploads** — attach the original contract (PDF/image), served with permission checks.
-- **Dark mode** — manual toggle, no flash of incorrect theme.
+</div>
 
 ---
 
-## Tech Stack
+## لمحة سريعة · Overview
 
-| Layer | Choice |
+![Dashboard](screenshots/dashboard.png)
+
+لوحة معلومات تعرض إجمالي المبالغ المطلوبة منّا والمبالغ المستحقة لنا بشكل منفصل، مع التنبيهات النشطة (انتهاء العقود واستحقاق الدفعات).
+
+---
+
+## المزايا · Features
+
+- **عقود ثنائية الاتجاه** — كل عقد له اتجاه: `نستأجر` (مدفوعات علينا) أو `نؤجّر` (محصّلات لنا)، مع تمييز لوني واضح بينهما.
+- **توليد جداول الدفعات تلقائياً** — من تاريخ البداية والدورية (شهري / كل 3 أشهر / كل 4 / نصف سنوي / سنوي). توزيع المبالغ يتم بالهللات مع وضع فرق التقريب على الدفعة الأخيرة، فيساوي مجموع الدفعات قيمة العقد بالضبط.
+- **ثلاثة أدوار وصلاحيات** — مدير النظام (تسجيل العقود والملفات والدفعات)، مستخدم إدارة (يرى عقود إدارته فقط ويوافق/يرفض، والرفض يتطلب سبباً إجبارياً)، ومشاهد عام (قراءة فقط).
+- **تقويم هجري/ميلادي** — منتقي تاريخ مخصّص يدعم التبديل بين التقويمين مع عرض التاريخ المقابل، عبر تقويم أم القرى (`Intl`) دون أي مكتبة خارجية. التخزين يبقى ميلادي ISO.
+- **تقرير شهري** — اختيار أي شهر لعرض المبالغ المستحقة، مقسّمة حسب الاتجاه.
+- **تنبيهات داخل النظام** — قبل انتهاء العقد بـ 30 يوماً، وقبل استحقاق الدفعة بـ 7 أيام (مع تمييز المتأخر).
+- **إدارة الإدارات والمستخدمين** — الإدارة المرتبطة بعقود محميّة من الحذف (يُقترح التعطيل بدلاً منه).
+- **وضع داكن** — تبديل يدوي بهوية بصرية مصمّمة لراحة القراءة.
+
+---
+
+## لقطات من النظام · Screenshots
+
+### قائمة العقود — التمييز بين ما نستأجره وما نؤجّره
+![Contracts](screenshots/contracts.png)
+
+### تسجيل عقد جديد — مع منتقي التاريخ الهجري/الميلادي وتوليد الدفعات
+![New Contract](screenshots/new-contract.png)
+
+### المبالغ المستحقة — جدول الدفعات بالتقويم الهجري
+![Payments](screenshots/payments.png)
+
+### التقرير الشهري
+![Monthly Report](screenshots/monthly-report.png)
+
+### الوضع الداكن · Dark Mode
+![Dark Mode](screenshots/dark-mode.png)
+
+---
+
+## التقنيات · Tech Stack
+
+| الطبقة | الاختيار |
 |---|---|
 | Framework | Next.js 15 (App Router) + React 19 |
 | Language | TypeScript (strict) |
 | Styling | Tailwind CSS v4 |
-| Database | SQLite via Node's built-in `node:sqlite` |
+| Database | SQLite عبر `node:sqlite` المدمج في Node |
 | Auth | JWT (httpOnly cookie) + bcrypt |
 | Validation | Zod |
 
-No ORM and no external database server — the entire data layer runs on Node's native SQLite, keeping the project self-contained and easy to run.
+بدون ORM وبدون خادم قاعدة بيانات خارجي — كامل طبقة البيانات تعمل على SQLite المدمج في Node، فيبقى المشروع مستقلاً وسهل التشغيل.
 
 ---
 
-## Getting Started
+## التشغيل · Getting Started
 
-> Requires **Node.js 22.5+** (for built-in `node:sqlite`).
+> يتطلب **Node.js 22.5 أو أحدث** (لدعم `node:sqlite` المدمج).
 
 ```bash
 npm install
-npm run seed     # creates the database + demo accounts and sample data
+npm run seed     # ينشئ قاعدة البيانات + الحسابات التجريبية والبيانات الأولية
 npm run build
 npm start        # http://localhost:3000
 ```
 
-For development:
+للتطوير:
 
 ```bash
 npm run dev
 ```
 
-> Both `start`/`dev` are configured to run with the `--experimental-sqlite` flag automatically. If you invoke Node directly, pass `NODE_OPTIONS="--experimental-sqlite"`.
+### الحسابات التجريبية · Demo Accounts
 
-### Demo accounts
-
-| Role | Email | Password |
+| الدور | البريد | كلمة المرور |
 |---|---|---|
-| Admin (مدير) | `admin@lease.sa` | `Admin@123` |
-| Department (إدارة) | `finance@lease.sa` | `Dept@123` |
-| Viewer (مشاهد) | `viewer@lease.sa` | `Viewer@123` |
+| مدير النظام | `admin@lease.sa` | `Admin@123` |
+| مستخدم إدارة | `finance@lease.sa` | `Dept@123` |
+| مشاهد عام | `viewer@lease.sa` | `Viewer@123` |
 
 ---
 
-## Architecture Notes
+## قرارات هندسية · Engineering Decisions
 
-- **Direction as the core abstraction.** Payable vs. receivable is modeled as a single `direction` column rather than two separate entities, so dashboards, reports, and lists share one query path and stay consistent.
-- **Money handled in halalas.** Payment splitting computes in integer halalas (`amount × 100`) to avoid floating-point drift, then converts back — guaranteeing installments sum to the contract total.
-- **Server/client boundary.** Server-only modules (`next/headers`, SQLite) are kept out of client bundles; shared constants (roles, labels) live in client-safe modules.
-- **Permission filtering at the query layer.** Visibility rules (a department user only sees their contracts) are applied in SQL `WHERE` clauses, not just in the UI.
+- **الاتجاه كتجريد أساسي.** «نستأجر» مقابل «نؤجّر» مُمثَّل كعمود `direction` واحد بدل كيانين منفصلين، فتشترك لوحة المعلومات والتقارير والقوائم في مسار استعلام واحد ويبقى السلوك متّسقاً.
+- **المبالغ بالهللات.** توزيع الدفعات يُحسب بأعداد صحيحة من الهللات (`المبلغ × 100`) لتفادي أخطاء الفاصلة العائمة، ثم يُحوَّل، فيضمن أن مجموع الأقساط يساوي قيمة العقد تماماً.
+- **فصل الخادم عن العميل.** الوحدات الخاصة بالخادم (`next/headers`, SQLite) مفصولة عن حِزم العميل؛ والثوابت المشتركة (الأدوار، المسميات) في وحدات آمنة للعميل.
+- **ترشيح الصلاحيات في طبقة الاستعلام.** قواعد الرؤية (مستخدم الإدارة يرى عقود إدارته فقط) مطبّقة في شرط `WHERE` في SQL، وليس في الواجهة فقط.
+- **تحويل هجري↔ميلادي دون مكتبات.** عبر `Intl` (تقويم أم القرى) مع خوارزمية تصحيح تكراري للتحويل العكسي، مع بقاء التخزين ميلادي ISO للحساب والمقارنة.
 
 ---
 
-## Project Structure
+## الاختبارات · Testing
+
+يتضمّن المشروع سكربتات اختبار شاملة (end-to-end) تغطّي:
+
+- عرض كل الصفحات لكل الأدوار الثلاثة، والتحقق من تطبيق الصلاحيات (إعادة توجيه المستخدم غير المصرّح له).
+- إنشاء العقود وتوليد جداول الدفعات تلقائياً.
+- منع الإدارة من إنشاء العقود (403)، ومنع الرفض دون سبب (400).
+- تسجيل الموافقات والمدفوعات، وحماية حذف الإدارات المرتبطة (409).
+
+```bash
+node --experimental-sqlite scripts/e2e.mjs    # اختبار عرض الصفحات والصلاحيات
+node --experimental-sqlite scripts/e2e2.mjs   # اختبار العمليات الكتابية
+```
+
+---
+
+## هيكل المشروع · Project Structure
 
 ```
 src/
 ├── app/
-│   ├── (app)/            # authenticated shell (sidebar + topbar)
-│   │   ├── dashboard/    contracts/  payments/
+│   ├── (app)/            # الواجهة المصادَقة (الشريط الجانبي + العلوي)
+│   │   ├── dashboard/  contracts/  payments/
 │   │   ├── reports/monthly/  approvals/
 │   │   └── departments/  users/  notifications/
-│   ├── api/              # route handlers (auth, contracts, payments, …)
+│   ├── api/              # معالِجات المسارات (auth, contracts, payments, …)
 │   └── login/
-├── components/           # UI + interactive client islands
+├── components/           # مكوّنات الواجهة + الجزر التفاعلية (DatePicker, …)
 └── lib/
-    ├── db.ts             # schema + connection (node:sqlite)
-    ├── dates.ts          # payment-schedule generation, Hijri/Gregorian
-    ├── auth.ts           # JWT, bcrypt, role guards
-    ├── queries.ts        # dashboard/report aggregates, visibility filters
+    ├── db.ts             # المخطط والاتصال (node:sqlite)
+    ├── dates.ts          # توليد الدفعات + تحويل هجري/ميلادي
+    ├── auth.ts           # JWT, bcrypt, حُرّاس الأدوار
+    ├── queries.ts        # تجميعات اللوحة والتقارير + ترشيح الصلاحيات
     └── types.ts / roles.ts
 ```
 
 ---
 
-*Built by Mosaab Alshehri.*
+<div align="center">
+
+تطوير: **مصعب الشهري** · Built by **Mosaab Alshehri**
+
+</div>
