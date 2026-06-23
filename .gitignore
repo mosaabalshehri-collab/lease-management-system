@@ -10,3 +10,5 @@ next-env.d.ts
 !/uploads/.gitkeep
 .env*.local
 .DS_Store
+/data/*.db-shm
+/data/*.db-wal
