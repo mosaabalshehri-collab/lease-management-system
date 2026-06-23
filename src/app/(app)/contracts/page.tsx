@@ -5,6 +5,7 @@ import { contractStatus } from "@/lib/queries";
 import { Money, DateLabel, Badge, Card } from "@/components/ui";
 import {
   DIRECTION_LABELS_AR,
+  DIRECTION_SECTION_AR,
   COUNTERPARTY_LABEL_AR,
   CONTRACT_STATUS_LABELS_AR,
   type Direction,
@@ -22,7 +23,7 @@ export default async function ContractsPage({
   const direction = dir === "leased_in" || dir === "leased_out" ? (dir as Direction) : undefined;
   const contracts = listContracts(user.role, user.department_id, direction);
 
-  const title = direction ? `عقود ${DIRECTION_LABELS_AR[direction]}` : "جميع العقود";
+  const title = direction ? `عقود ${DIRECTION_SECTION_AR[direction]}` : "جميع العقود";
   const isAdmin = user.role === "admin";
 
   return (

@@ -62,8 +62,8 @@ export default async function DashboardPage() {
 
       {/* مؤشرات سريعة */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        <StatCard label="عقود نستأجرها" value={s.countLeasedIn} icon="leased-in" />
-        <StatCard label="عقود نؤجّرها" value={s.countLeasedOut} icon="leased-out" />
+        <StatCard label="عقود بصفتنا مستأجرين" value={s.countLeasedIn} icon="leased-in" />
+        <StatCard label="عقود بصفتنا مؤجرين" value={s.countLeasedOut} icon="leased-out" />
         <StatCard label="عقود قاربت الانتهاء" value={s.expiringCount} icon="clock" tone="warning" />
         <StatCard label="دفعات متأخرة" value={s.overduePayments} icon="alert" tone="danger" />
       </div>

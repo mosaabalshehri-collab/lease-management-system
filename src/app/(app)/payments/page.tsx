@@ -25,7 +25,7 @@ export default async function PaymentsPage({
           {isPayable ? "مبالغ مطلوبة منّا" : "مبالغ نحصّلها"}
         </h1>
         <p className="mt-1 text-sm" style={{ color: "var(--color-pending)" }}>
-          {isPayable ? "دفعات عقود نستأجرها" : "دفعات عقود نؤجّرها"}
+          {isPayable ? "دفعات عقود بصفتنا مستأجرين" : "دفعات عقود بصفتنا مؤجرين"}
         </p>
       </div>
 

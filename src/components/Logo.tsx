@@ -1,24 +1,14 @@
-/** شعار النظام: درع بأسلوب رسمي مستوحى من هوية ناجز */
+/** شعار النظام: تأجير ثنائي الاتجاه — سهمان (نستأجر ↔ نؤجّر) داخل بلاطة بهوية النظام */
 export function Logo({ size = 36 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <path
-        d="M24 3l16 6v11c0 10.5-6.8 19.6-16 22.5C14.8 39.6 8 30.5 8 20V9l16-6z"
-        fill="var(--color-primary)"
-      />
-      <path
-        d="M24 9.5l10 3.7v7.3c0 6.8-4.3 12.7-10 14.8-5.7-2.1-10-8-10-14.8v-7.3l10-3.7z"
-        fill="var(--color-paper)"
-        opacity="0.15"
-      />
-      <path
-        d="M18 24l4.5 4.5L31 20"
-        stroke="var(--color-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
+      <rect x="6" y="6" width="36" height="36" rx="11" fill="var(--color-primary)" />
+      {/* السهم الصاعد — نؤجّر (مبالغ لنا) */}
+      <path d="M19 33 L19 17" stroke="var(--color-gold)" strokeWidth="3.2" strokeLinecap="round" />
+      <path d="M14.6 21.4 L19 16.5 L23.4 21.4" stroke="var(--color-gold)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* السهم النازل — نستأجر (مبالغ علينا) */}
+      <path d="M29 15 L29 31" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
+      <path d="M24.6 26.6 L29 31.5 L33.4 26.6" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </svg>
   );
 }

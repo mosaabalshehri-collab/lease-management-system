@@ -15,8 +15,8 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   { href: "/dashboard", label: "لوحة المعلومات", icon: "dashboard", roles: ["admin", "department", "viewer"] },
-  { href: "/contracts?dir=leased_in", label: "عقود نستأجرها", icon: "leased-in", roles: ["admin", "department", "viewer"] },
-  { href: "/contracts?dir=leased_out", label: "عقود نؤجّرها", icon: "leased-out", roles: ["admin", "department", "viewer"] },
+  { href: "/contracts?dir=leased_in", label: "عقود بصفتنا مستأجرين", icon: "leased-in", roles: ["admin", "department", "viewer"] },
+  { href: "/contracts?dir=leased_out", label: "عقود بصفتنا مؤجرين", icon: "leased-out", roles: ["admin", "department", "viewer"] },
   { href: "/payments?type=payable", label: "مبالغ مطلوبة منّا", icon: "payable", roles: ["admin", "department", "viewer"] },
   { href: "/payments?type=receivable", label: "مبالغ نحصّلها", icon: "receivable", roles: ["admin", "department", "viewer"] },
   { href: "/reports/monthly", label: "التقرير الشهري", icon: "calendar", roles: ["admin", "department", "viewer"] },

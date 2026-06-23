@@ -5,8 +5,14 @@ import type { PaymentFrequency } from "./dates";
 export type Direction = "leased_in" | "leased_out";
 
 export const DIRECTION_LABELS_AR: Record<Direction, string> = {
-  leased_in: "نستأجر",   // مبالغ علينا (Payable)
-  leased_out: "نؤجّر",   // مبالغ لنا (Receivable)
+  leased_in: "نستأجر",   // مبالغ علينا (Payable) — شارة قصيرة
+  leased_out: "نؤجّر",   // مبالغ لنا (Receivable) — شارة قصيرة
+};
+
+// تسمية موسّعة للعناوين والأقسام الواسعة
+export const DIRECTION_SECTION_AR: Record<Direction, string> = {
+  leased_in: "بصفتنا مستأجرين",
+  leased_out: "بصفتنا مؤجرين",
 };
 
 export const DIRECTION_FULL_AR: Record<Direction, string> = {
