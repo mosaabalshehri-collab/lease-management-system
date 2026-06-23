@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* نتبع كلاس .dark على <html> بدل media query الافتراضية في Tailwind v4،
+   عشان ندعم التبديل اليدوي للوضع الداكن عبر ThemeToggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* الألوان الأساسية - مستوحاة من هوية منصة ناجز: أخضر زاهي رسمي + ذهبي،
+     خلفية فاتحة نظيفة */
+  --color-ink: #1A1A1A;
+  --color-primary: #00754A;
+  --color-primary-dark: #005C3A;
+  --color-primary-light: #E6F4EE;
+  --color-gold: #C9A24B;
+  --color-gold-light: #FBF1E4;
+  --color-paper: #FFFFFF;
+  --color-paper-raised: #FFFFFF;
+  --color-surface: #F7F8F7;
+  --color-border: #E5E7E5;
+
+  --color-ink-dark: #0E2A20;
+  --color-ink-light: #00754A;
+
+  /* اتجاه العقد - تمييز بصري جوهري بين ما نستأجره وما نؤجّره */
+  --color-payable: #B45309;       /* نستأجر = مبالغ علينا (مدفوعات) */
+  --color-payable-bg: #FBF1E4;
+  --color-receivable: #00754A;    /* نؤجّر = مبالغ لنا (محصّلات) */
+  --color-receivable-bg: #E6F4EE;
+
+  /* حالات العقد والدفعات */
+  --color-status-active: #00754A;
+  --color-status-active-bg: #E6F4EE;
+  --color-status-warning: #B8762E;
+  --color-status-warning-bg: #FBF1E4;
+  --color-status-expired: #C0392B;
+  --color-status-expired-bg: #FBEAEA;
+  --color-status-paid: #00754A;
+  --color-status-paid-bg: #E6F4EE;
+  --color-status-due: #B8762E;
+  --color-status-due-bg: #FBF1E4;
+  --color-status-overdue: #C0392B;
+  --color-status-overdue-bg: #FBEAEA;
+
+  /* حالات الموافقة */
+  --color-approved: #00754A;
+  --color-approved-bg: #E6F4EE;
+  --color-rejected: #C0392B;
+  --color-rejected-bg: #FBEAEA;
+  --color-pending: #6B6358;
+  --color-pending-bg: #EFEDE8;
+
+  --background: var(--color-surface);
+  --foreground: var(--color-ink);
+}
+
+/* الوضع الداكن - لوحة مصممة لراحة القراءة في الإضاءة المنخفضة،
+   وليست انعكاساً حرفياً للفاتح. كل المتغيرات تحتفظ بنفس الاسم. */
+.dark {
+  --color-ink: #EDEDEC;
+  --color-primary: #2FAF7C;
+  --color-primary-dark: #4AC795;
+  --color-primary-light: #103A2B;
+  --color-gold: #D9B567;
+  --color-gold-light: #2E2614;
+  --color-paper: #1C1F1E;
+  --color-paper-raised: #232726;
+  --color-surface: #16181A;
+  --color-border: #34383A;
+
+  --color-ink-dark: #EDEDEC;
+  --color-ink-light: #2FAF7C;
+
+  --color-payable: #E0A857;
+  --color-payable-bg: #332710;
+  --color-receivable: #3FC08A;
+  --color-receivable-bg: #143226;
+
+  --color-status-active: #3FC08A;
+  --color-status-active-bg: #143226;
+  --color-status-warning: #E0A857;
+  --color-status-warning-bg: #332710;
+  --color-status-expired: #E5685D;
+  --color-status-expired-bg: #3A1816;
+  --color-status-paid: #3FC08A;
+  --color-status-paid-bg: #143226;
+  --color-status-due: #E0A857;
+  --color-status-due-bg: #332710;
+  --color-status-overdue: #E5685D;
+  --color-status-overdue-bg: #3A1816;
+
+  --color-approved: #3FC08A;
+  --color-approved-bg: #143226;
+  --color-rejected: #E5685D;
+  --color-rejected-bg: #3A1816;
+  --color-pending: #A39C90;
+  --color-pending-bg: #2A2826;
+
+  --background: var(--color-surface);
+  --foreground: var(--color-ink);
+
+  color-scheme: dark;
+}
+
+/* نربط متغيرات Tailwind theme بمتغيرات :root أعلاه (بادئة brand لتفادي التعريف الدائري) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-ink: var(--color-ink);
+  --color-brand-primary: var(--color-primary);
+  --color-brand-primary-dark: var(--color-primary-dark);
+  --color-brand-paper: var(--color-paper);
+  --color-brand-paper-raised: var(--color-paper-raised);
+  --color-brand-gold: var(--color-gold);
+  --color-brand-border: var(--color-border);
+  --color-brand-surface: var(--color-surface);
+  --font-sans: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* خلفية زخرفية بنقاط خفيفة، مستوحاة من صفحة ناجز الرئيسية */
+.dotted-bg {
+  background-image: radial-gradient(circle, #00754A14 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+.dark .dotted-bg {
+  background-image: radial-gradient(circle, #2FAF7C22 1.5px, transparent 1.5px);
+}
+
+/* أرقام المبالغ والتواريخ تستخدم محاذاة جدولية لسهولة القراءة */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* بطاقة تفاعلية (قابلة للنقر): الارتفاع البصري عند المرور.
+   في الوضع الفاتح يُستخدم ظل ناعم؛ وفي الداكن — حيث الظلال السوداء
+   تكون شبه مرئية — نعتمد على إبراز الحدّ مع ظل أعمق للتعريف. */
+.card-interactive {
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.card-interactive:hover {
+  box-shadow: 0 4px 14px rgba(16, 40, 30, 0.1);
+  border-color: var(--color-primary);
+}
+.dark .card-interactive:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+  border-color: var(--color-primary);
+}
+
+/* تصحيح الظلال في الوضع الداكن (الافتراضية شبه غير مرئية على خلفية داكنة) */
+.dark .shadow-sm { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+.dark .shadow-lg { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+
+/* حلقة تركيز واضحة للحقول (إتاحة + اتساق عبر الوضعين) */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* شريط تمرير رفيع وأنيق */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 6px;
+  border: 2px solid var(--background);
+}
