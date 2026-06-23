@@ -7,6 +7,7 @@
 
 A full-stack, Arabic-first lease management system for organizations that both **rent properties (as tenant)** and **lease them out (as landlord)** — with automatic payment-schedule generation, multi-department approvals, and Hijri/Gregorian calendar support.
 
+[![Build](https://github.com/mosaabalshehri-collab/lease-management-system/actions/workflows/build.yml/badge.svg)](https://github.com/mosaabalshehri-collab/lease-management-system/actions/workflows/build.yml)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=next.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
